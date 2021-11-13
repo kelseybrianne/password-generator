@@ -55,22 +55,22 @@ function generatePassword() {
   if (confirmLowercase) {
     allUserChosenCharacters = allUserChosenCharacters.concat(lowercase)
     //ensure that a lowercase letter is included in the password here
-    password += "d"
+    password += lowercase[Math.floor(Math.random() * lowercase.length)];
   }
 
   if (confirmUppercase) {
     allUserChosenCharacters = allUserChosenCharacters.concat(uppercase)
-    password += "N"
+    password += uppercase[Math.floor(Math.random() * uppercase.length)];
   }
 
   if (confirmNumbers) {
     allUserChosenCharacters = allUserChosenCharacters.concat(numbers)
-    password += 3
+    password += numbers[Math.floor(Math.random() * numbers.length)];
   }
 
   if (confirmSpecialChars) {
     allUserChosenCharacters = allUserChosenCharacters.concat(specialChars)
-    password += "*"
+    password += specialChars[Math.floor(Math.random() * specialChars.length)];
   }
 
   if (confirmSpecialChars == false && confirmUppercase == false && confirmLowercase == false && confirmNumbers == false) {
@@ -85,6 +85,7 @@ function generatePassword() {
 
   if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecialChars == true) {
     console.log("All four confirmed");
+    confirm("You selected lowercase, uppercase, numeric, and special characters. Click `OK` to continue.");
     
   } else if (confirmLowercase == true && confirmUppercase == true && confirmSpecialChars == true && confirmNumbers == false) {
     console.log("lowercase, uppercase, and special characters confirmed");
