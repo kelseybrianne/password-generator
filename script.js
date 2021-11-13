@@ -4,16 +4,12 @@ var generateBtn = document.querySelector("#generate");
 function generatePassword() {
 
   password = "";
-  console.log("Generate a password.");
 
 
-  
   var numbers = [0,1,2,3,4,5,6,7,8,9];
   var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   var uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var specialChars = ["!","@","#","$","%","^","&","*","(",")","-","_","+","="];
-
-
 
 
   var x = true;
@@ -58,18 +54,23 @@ function generatePassword() {
 
   if (confirmLowercase) {
     allUserChosenCharacters = allUserChosenCharacters.concat(lowercase)
+    //ensure that a lowercase letter is included in the password here
+    password += "d"
   }
 
   if (confirmUppercase) {
     allUserChosenCharacters = allUserChosenCharacters.concat(uppercase)
+    password += "N"
   }
 
   if (confirmNumbers) {
     allUserChosenCharacters = allUserChosenCharacters.concat(numbers)
+    password += 3
   }
 
   if (confirmSpecialChars) {
     allUserChosenCharacters = allUserChosenCharacters.concat(specialChars)
+    password += "*"
   }
 
   if (confirmSpecialChars == false && confirmUppercase == false && confirmLowercase == false && confirmNumbers == false) {
@@ -83,7 +84,6 @@ function generatePassword() {
 
 
   if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecialChars == true) {
-    var useThese = allFour
     console.log("All four confirmed");
     
   } else if (confirmLowercase == true && confirmUppercase == true && confirmSpecialChars == true && confirmNumbers == false) {
