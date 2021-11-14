@@ -3,21 +3,23 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
 
+  
   password = "";
 
-
+  // Create an array for each character type
   var numbers = [0,1,2,3,4,5,6,7,8,9];
   var lowercase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
   var uppercase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
   var specialChars = ["!","@","#","$","%","^","&","*","(",")","-","_","+","="];
 
 
+  // Ensure that the user puts in a desired password length.
   var x = true;
 
   while (x) {
 
     var passwordLength = prompt("How many characters would you like your password to be?");
-
+    // Ensure that the password length is between 8 and 128 characters
     if (passwordLength >= 8 && passwordLength <= 128) {
       alert("You selected " + passwordLength + " characters.");
       x = false;
@@ -32,7 +34,7 @@ function generatePassword() {
   };
 
 
-
+  //NEED HELP**WHY ARE THESE NOT WORKING
   function confirmCharacters() {
 
     var confirmLowercase = confirm("Would you like your password to include lowercase?");
@@ -42,19 +44,19 @@ function generatePassword() {
 
   }
 
+  //*****ADDED SO THAT THE VARIABLES WORK */
   var confirmLowercase = confirm("Would you like your password to include lowercase letters?");
   var confirmUppercase = confirm("Would you like your password to include uppercase letters?");
   var confirmNumbers = confirm("Would you like your password to include numbers?");
   var confirmSpecialChars = confirm("Would you like your password to include special characters?");
 
 
-
-
+  // Combine arrays depending on which character types the user selects
   var allUserChosenCharacters = [];
 
   if (confirmLowercase) {
     allUserChosenCharacters = allUserChosenCharacters.concat(lowercase)
-    //ensure that a lowercase letter is included in the password here
+    // Ensure that a lowercase letter is included in the password
     password += lowercase[Math.floor(Math.random() * lowercase.length)];
   }
 
@@ -82,7 +84,7 @@ function generatePassword() {
 
 
 
-
+  // Create a confirm for each possible outcome to validate the user's selection.
   if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecialChars == true) {
     console.log("All four confirmed");
     confirm("You selected lowercase, uppercase, numeric, and special characters. Click `OK` to continue.");
@@ -135,7 +137,7 @@ function generatePassword() {
   }
 
 
-
+  // Use a for loop to add a random character from the customized array one character at a time until the password length has been reached
   for (var i = 0; i < passwordLength; i++) {
    
     password += allUserChosenCharacters[Math.floor(Math.random() * allUserChosenCharacters.length)];
