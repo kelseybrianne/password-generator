@@ -41,73 +41,19 @@ function generatePassword() {
   };
 
 
-  //NEED HELP**WHY ARE THESE NOT WORKING
   function confirmCharacters() {
 
-    var confirmLowercase = confirm("Would you like your password to include lowercase?");
-    var confirmUppercase = confirm("Would you like your password to include uppercase?");
-    var confirmNumbers = confirm("Would you like your password to include numbers?");
-    var confirmSpecialChars = confirm("Would you like your password to include special characters?");
+    confirmLowercase = confirm("Would you like your password to include lowercase?");
+    confirmUppercase = confirm("Would you like your password to include uppercase?");
+    confirmNumbers = confirm("Would you like your password to include numbers?");
+    confirmSpecialChars = confirm("Would you like your password to include special characters?");
     if (confirmSpecialChars == false && confirmUppercase == false && confirmLowercase == false && confirmNumbers == false){
       confirmCharacters();
     }
     createArray(confirmLowercase, confirmUppercase, confirmNumbers, confirmSpecialChars);
-    validateSelection();
-  }
-  
-  // //*****ADDED SO THAT THE VARIABLES WORK */
-  // var confirmLowercase = confirm("Would you like your password to include lowercase letters?");
-  // var confirmUppercase = confirm("Would you like your password to include uppercase letters?");
-  // var confirmNumbers = confirm("Would you like your password to include numbers?");
-  // var confirmSpecialChars = confirm("Would you like your password to include special characters?");
-  
-  function createArray(confirmLowercase, confirmUppercase, confirmNumbers, confirmSpecialChars) {
-    // Combine arrays depending on which character types the user selects
-    var allUserChosenCharacters = [];
-    
-    if (confirmLowercase) {
-      allUserChosenCharacters = allUserChosenCharacters.concat(lowercase)
-      // Ensure that a lowercase letter is included in the password
-      password += lowercase[Math.floor(Math.random() * lowercase.length)];
-    }
-    
-    if (confirmUppercase) {
-      allUserChosenCharacters = allUserChosenCharacters.concat(uppercase)
-      password += uppercase[Math.floor(Math.random() * uppercase.length)];
-    }
-    
-    if (confirmNumbers) {
-      allUserChosenCharacters = allUserChosenCharacters.concat(numbers)
-      password += numbers[Math.floor(Math.random() * numbers.length)];
-    }
-    
-    if (confirmSpecialChars) {
-      allUserChosenCharacters = allUserChosenCharacters.concat(specialChars)
-      password += specialChars[Math.floor(Math.random() * specialChars.length)];
-    }
-    
-    if (confirmSpecialChars == false && confirmUppercase == false && confirmLowercase == false && confirmNumbers == false) {
-      
-      alert("You must choose at least one character type.");
-      
-    };
-    // Use a for loop to add a random character from the customized array one character at a time until the password length has been reached
-    validateSelection();
-    
-    for (var i = 0; i < passwordLength; i++) {
-      
-      password += allUserChosenCharacters[Math.floor(Math.random() * allUserChosenCharacters.length)];
-      
-    }
-    
-    console.log(confirmLowercase)
-    
-  };
-  
-  
-  function validateSelection() {
-    
-    // Create a confirm for each possible outcome to validate the user's selection.
+
+
+    // Validate user's character type selection
     if (confirmLowercase == true && confirmUppercase == true && confirmNumbers == true && confirmSpecialChars == true) {
       console.log("All four confirmed");
       confirm("You selected lowercase, uppercase, numeric, and special characters. Click `OK` to continue.");
@@ -158,13 +104,60 @@ function generatePassword() {
       alert("You must select at least one character type.");
       confirmCharacters();
     }
-    return;
+  
+  }
+  
+  //*****ADDED SO THAT THE VARIABLES WORK */
+  var confirmLowercase
+  var confirmUppercase
+  var confirmNumbers
+  var confirmSpecialChars 
+  
+  function createArray(confirmLowercase, confirmUppercase, confirmNumbers, confirmSpecialChars) {
+    // Combine arrays depending on which character types the user selects
+    var allUserChosenCharacters = [];
+    
+    if (confirmLowercase) {
+      allUserChosenCharacters = allUserChosenCharacters.concat(lowercase)
+      // Ensure that a lowercase letter is included in the password
+      password += lowercase[Math.floor(Math.random() * lowercase.length)];
+    }
+    
+    if (confirmUppercase) {
+      allUserChosenCharacters = allUserChosenCharacters.concat(uppercase)
+      password += uppercase[Math.floor(Math.random() * uppercase.length)];
+    }
+    
+    if (confirmNumbers) {
+      allUserChosenCharacters = allUserChosenCharacters.concat(numbers)
+      password += numbers[Math.floor(Math.random() * numbers.length)];
+    }
+    
+    if (confirmSpecialChars) {
+      allUserChosenCharacters = allUserChosenCharacters.concat(specialChars)
+      password += specialChars[Math.floor(Math.random() * specialChars.length)];
+    }
+    
+    if (confirmSpecialChars == false && confirmUppercase == false && confirmLowercase == false && confirmNumbers == false) {
+      
+      alert("You must choose at least one character type.");
+      
+    };
+    // Use a for loop to add a random character from the customized array one character at a time until the password length has been reached
+    
+    for (var i = 0; i < passwordLength; i++) {
+      
+      password += allUserChosenCharacters[Math.floor(Math.random() * allUserChosenCharacters.length)];
+      
+    }
+    
+    console.log(confirmLowercase)
+    
   };
   
   return password;
 
 };
-  
   
   // Write password to the #password input
 function writePassword() {
